@@ -1,19 +1,27 @@
-
-/*
 const express = require('express');
 const app = express();
+const ejs = require('ejs');
+
+app.set('view engine','ejs');
+app.set('views','./views');
 
 
+
+
+app.get('/',(req,res) => {
+  res.render('index');
+});
+
+app.get('/join.ejs',(req,res) => {
+  res.render('join');
+});
 
 app.listen(8080, function(){
     console.log('listening on 8080');
 });
-*/
 
 
-
-
-const { assert } = require('console');
+/*
 const http = require('http');
 
 const hostname = '127.0.0.1'; // 로컬 호스트
@@ -21,27 +29,14 @@ const hostname = '127.0.0.1'; // 로컬 호스트
 const port = 8080;
 
 const server = http.createServer((req, res) => {
-
-  res.statusCode = 200;
-
-  res.writeHead(200, { 'Content-Type': 'text/html; charset=utf-8' });
+  var _url = request.url;
   
-
-  res.get("/dbconnect.js" ,(req,res) => {
-    res
-  })
-
-  
-
 });
-
 
 server.listen(port, hostname, () => {
 
   console.log(`Server is running at https://${hostname}:${port}/`);
 
 });
-
-
-
+*/
 

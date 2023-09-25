@@ -4,7 +4,7 @@ const connection  = mysql.createConnection({
   host : '3.37.132.55',
   port : '3306',
   user : 'hansol',
-  password : '',
+  password : 'Adda7494*0',
   database : 'nodedata'
 });
 
@@ -18,7 +18,7 @@ connection.connect((err) => {
     console.log('데이터베이스에 연결되었습니다.');
   });
 
- connection.query('select * from test', function(error,results,fields) {
+ connection.query('select id from test', function(error,results,fields) {
 
     if (error) throw error;
     console.log('id',results);
