@@ -2,23 +2,33 @@
 const express = require('express'); //express 모듈 사용
 const app = express();
 const bodyParser = require('body-parser');
+const fs = require('fs');
 //크롤링사용
-const axios = require('axios');
-const cheerio = require('cheerio');
-
-
-
+//const axios = require('axios');
+//const cheerio = require('cheerio');
 
 //const ejs = require('ejs');
 
 //ejs확장자 사용하기 위해 선언
-app.set('view engine','ejs');
 app.set('views','./views');
+app.set('view engine','ejs');
+
 
 app.use(express.static('public')); //정적인 파일이 이미지
 app.use(bodyParser.urlencoded({extended :false})); // 폼 데이터 post방식 사용위해 미들웨어설정
 
-/*
+app.get('/topic/index' , function(req,res){
+  res.render('index');
+})
+
+app.get('/topic',function(req,res){
+ 
+    var test = ['test5551','test2'];
+    res.render('template',{test});
+});
+
+
+
 //루트페이지 
 app.get('/' , function(req,res){
 
@@ -26,7 +36,8 @@ app.get('/' , function(req,res){
     
   res.send(move_page);
 });
-*/
+
+
 //url이 form 이면 form.ejs로 이동 
 app.get('/form' , function(req,res){
   res.render('form');
@@ -34,9 +45,11 @@ app.get('/form' , function(req,res){
 
 //form 에서 post 방식으로 데이터 전송  body
 app.post('/form_post' , function(req,res){
-  var title = req.body.title;
-  var textare = req.body.textare;
-  res.send(title+','+textare);
+  var id = req.body.id;
+  var pass = req.body.pass;
+
+  //const query = insert into 
+  res.send(id+','+pass );
 });
 
 
@@ -46,7 +59,7 @@ app.get('/form_get' , function(req,res){
   var textare = req.query.textare;
   res.send(title+','+textare);
 });
-
+/*
 app.get('/topic/:id' , function(req,res){
   var topics = ['javascript i', 'nodejs', 'express'];
 
@@ -61,7 +74,7 @@ app.get('/topic/:id' , function(req,res){
 app.get ('/topic/:id/:mode' , function(req,res){
     res.send(req.params.id+','+req.params.mode);
 });
-
+*/
 
 app.get('/dynamic' ,  function(req,res){
   var lis ='';
@@ -99,7 +112,6 @@ app.listen(8080, function(){
   console.log('listening on 8080');
 });
 
-
 /*
 const http = require('http');
 const hostname = '127.0.0.1'; // 로컬 호스트
@@ -113,6 +125,7 @@ const server = http.createServer((req, res) => {
   
 
 });
+
 
 server.listen(port, hostname, () => {
   console.log(`Server is running at https://${hostname}:${port}/`);
