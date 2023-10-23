@@ -22,7 +22,7 @@ router.get('form_get' , function(req,res){
   var title = req.query.title; // 클라이언트에서 입력한 값을 쿼리 형식으로 가져온다  req 는 클라이언트에서 title값은 뭐라고 요청을 했음 
   var textare = req.query.textare;
   res.send(title+','+textare);
-
+a
 });
 
 /*
