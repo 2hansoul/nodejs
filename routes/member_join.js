@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 //ejs확장자 사용하기 위해 선언
 app.set('views','./views');
 app.set('view engine','ejs');
+a
 
 app.use(bodyParser.urlencoded({extended :false})); // 폼 데이터 post방식 사용위해 미들웨어설정
 
