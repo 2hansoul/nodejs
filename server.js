@@ -6,7 +6,9 @@ const mysql = require('mysql');
 //Router
 const indexRouter = require('./routes/index');
 const joinRouter = require('./routes/member_join');
+const itemsRouter = require('./routes/restapi_test');
 
+/*
 const db  = mysql.createConnection({
   host : '192.168.5.133',
   port : '3306',
@@ -16,24 +18,29 @@ const db  = mysql.createConnection({
 });
 
 db.connect();
-
+*/
 //ejs확장자 사용하기 위해 선언
 app.set('views','./views');
 app.set('view engine','ejs');
 
 app.use(express.static('public')); //정적인 파일이 이미지
 app.use(bodyParser.urlencoded({extended :false})); // 폼 데이터 post방식 사용위해 미들웨어설정
+
 //Router 설정
 app.use('/',indexRouter);
-app.use('/form', joinRouter);
+app.use('/join', joinRouter);
+app.use('/api', itemsRouter);
+
 
 
 
 
 //page 404 이면 해당 내역 출력 서버 실행 위에 배치해야 정상작동
 app.use(function(req, res, next) {
-  res.status(404).send('404 Sorry cant find that');
+  res.status(404).send('404 Sorry cant find that!!');
 });
+
+
 
 app.listen(8080, function(){
   
